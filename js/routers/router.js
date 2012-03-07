@@ -20,26 +20,27 @@ define(
 	root : function () {
 	    var view = new RootView;
 	    view.render();
-	    view.updateMainView(view.el, 0);
 	},
 
 	about : function() {
 	    var view = new AboutView;
 	    view.render();
-	    view.updateMainView(view.el, 1);	    
 	},
 
 	contact : function() {
 	    var view = new ContactView;
 	    view.render();
-	    view.updateMainView(view.el, 2);
 	},
 
 	site: function(sitename) {
 	    var site  = new Site(null, {sitename: sitename}),
-	        view  = new SiteView({collection: site });	    
-	}	
+	        view  = new SiteView({collection: site });
 
+	    $.getJSON(site.url, function(json) {
+		site.reset(json);
+		view.render();
+	    });	    
+	}	
     });
 
 

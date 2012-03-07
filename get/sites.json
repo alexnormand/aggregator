@@ -20,8 +20,8 @@
 	"site": "My Life Is Average",
 	"entrytag":"item",
 	"datetag": "pubDate",
-       "contenttag": "description",
-       "urltag":"guid"
+	"contenttag": "description",
+        "urltag":"guid"
    },
 
    "dtc"       :  {

@@ -13,6 +13,7 @@ define([
 
 	render: function(event) {
 	    this.$el.html(this.template);
+	    this.updateMainView(this.el, 2);
 	    return this;
 	}
 

@@ -13,9 +13,7 @@ define([
 	    menuItems.removeClass('active');
 	    menuItems.eq(i).addClass('active');
 	},
-	spinner : '<div id="spinner"></div>',
-	
-
+	spinner : '<div id="spinner"></div>',	
     });
     
     return BaseView;
