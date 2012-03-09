@@ -26,6 +26,7 @@
 
    "dtc"       :  {
        "feedurl": "http://feeds.feedburner.com/bashfr",
+       "offset": 3,
        "site": "Dans ton chat",
        "entrytag": "item",
        "datetag": "pubDate",

@@ -19,14 +19,19 @@ $getQuotes = function($quotesite) use ($json) {
   $result = $entries->each(function($node) use ($site) {
       $e = new Crawler($node);
     
+      $content = $e->filter($site['contenttag'])->text();            
+      $content = preg_replace('/<a.+>.*<\/a>/i', '', $content);
+      $content = preg_replace('/<img.+>/i', '', $content);
+
       return array (
 	       'date'    => $e->filter($site['datetag'])->text(),
 	       'url'     => $e->filter($site['urltag'])->text(),
-	       'content' => $e->filter($site['contenttag'])->text()
+	       'content' => $content
                    );    
     });
 
-  return json_encode($result);
+  return isset($site['offset']) ? json_encode(array_slice($result, $site['offset']))
+                                : json_encode($result);
 };
 
 
