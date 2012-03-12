@@ -8,14 +8,19 @@ define([
     var Site = BaseView.extend({	
 
 	template: SiteTemplate,
-	
-	render: function(event) {
-	    this.$el.html(this.template);
 
-	    html = _.template(this.template,
+	initialize: function() {
+	    this.collection.bind('reset', this.render, this);
+	    $(document).scrollTop() !== 0 && $(document).scrollTop(0);
+	},
+	
+	render: function(event) {	    
+
+	    var	html = _.template(this.template,
 			      {quotes: this.collection.toJSON()});
 
-	    this.updateMainView(html, 0);
+	    this.$el.html(html);
+	    this.updateMainView(this.el, 0);
 	    return this;
 	}
 

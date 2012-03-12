@@ -1,7 +1,7 @@
 define(
     ['jquery', 
      'backbone',
-     'views/root',
+     'views/root/root',
      'views/about',
      'views/contact',
      'views/site',
@@ -18,8 +18,12 @@ define(
 	},
 
 	root : function () {
-	    var view = new RootView;
-	    view.render();
+	    var view;
+
+	    $.getJSON('get/sites.json', function(sites) {
+		view = new RootView({sites: sites});
+		view.render();
+	    });
 	},
 
 	about : function() {
@@ -38,7 +42,6 @@ define(
 
 	    $.getJSON(site.url, function(json) {
 		site.reset(json);
-		view.render();
 	    });	    
 	}	
     });

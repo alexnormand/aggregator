@@ -35,7 +35,7 @@
    },
    "pebkac"    :  {
        "feedurl": "http://feeds.feedburner.com/Pebkacfr",
-       "site": "PEBKAC.fr : erreurs d'interface chaise/clavier",
+       "site": "PEBKAC",
        "entrytag":"item",
        "datetag": "pubDate",
        "contenttag": "description",
