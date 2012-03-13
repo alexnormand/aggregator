@@ -10,9 +10,7 @@ define([
 
 	    $('#main').html(html);
 	    menuItems.removeClass('active');
-	    menuItems.eq(i).addClass('active');
-	    
-
+	    i !== null && menuItems.eq(i).addClass('active');	    
 	},
     });
     
