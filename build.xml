@@ -42,6 +42,7 @@
         <mkdir dir="${build.dir}"/>
         <mkdir dir="${build.dir}/js"/>
         <mkdir dir="${build.dir}/css"/>
+        <mkdir dir="${build.dir}/img"/>
 	<mkdir dir="${build.dir}/get" />
         
         <!--Log the build timestamps to file
@@ -60,6 +61,9 @@
       <echo>Compressed index.html</echo>
       <copy file="${basedir}/apple-touch-icon.png" todir="${build.dir}" />
       <copy file="${basedir}/favicon.ico" todir="${build.dir}" />
+      <copy todir="${build.dir}/img">
+	<fileset dir="${basedir}/img" />
+      </copy>
       <echo>Copied index.html</echo>
     </target>
 	
