@@ -14,13 +14,22 @@ define([
 	    $(document).scrollTop() !== 0 && $(document).scrollTop(0);
 	},
 	
-	render: function(event) {	    
-
-	    var	html = _.template(this.template,
-			      {quotes: this.collection.toJSON()});
-
-	    this.$el.html(html);
-	    this.updateMainView(this.el, 0);
+	render: function() {	    
+	    $.ajax({
+		url: 'get/sites.json', 
+		dataType: 'json',
+		context: this,
+		success: function(sites) {
+		
+		    var html = _.template(this.template,
+					  { name: sites[this.id]['site'],
+					    quotes: this.collection.toJSON()
+					  });
+		
+		    this.$el.html(html);
+		    this.updateMainView(this.el, null);
+		}
+	    });		     	    	    
 	    return this;
 	}
 

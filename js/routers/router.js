@@ -17,11 +17,9 @@ define(
 	    ":sitename"   : "site"	    
 	},
 
-	root : function () {
-	    var view;
-
+	root : function () {	  
 	    $.getJSON('get/sites.json', function(sites) {
-		view = new RootView({sites: sites});
+		var view = new RootView({sites: sites});
 		view.render();
 	    });
 	},
@@ -38,7 +36,9 @@ define(
 
 	site: function(sitename) {
 	    var site  = new Site(null, {sitename: sitename}),
-	        view  = new SiteView({collection: site });
+	        view  = new SiteView({collection: site,
+				      id: sitename 
+				     });
 
 	    $.getJSON(site.url, function(json) {
 		site.reset(json);
