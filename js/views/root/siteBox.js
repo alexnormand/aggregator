@@ -7,10 +7,6 @@ define([
     var SiteBox = Backbone.View.extend({	
 
 	template: siteBoxTemplate,
-	parentElement : $('.row'),
-	//tagName: 'div',
-	//bclassName: 'span4 site-box',
-
 
 	initialize: function(options) {	  
 	    this.name = options.name;
