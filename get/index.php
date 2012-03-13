@@ -38,11 +38,16 @@ $getQuotes = function($quotesite) use ($json) {
 $app = new Silex\Application();
 
 $app->get('/{quotesite}', function ($quotesite) use ($getQuotes, $app) {
-    return new Response(
+
+    $response = new Response(
 		  $getQuotes($app->escape($quotesite)),			
 		  200,
 		  array('Content-Type' => 'application/json')
-	       );   
+		);   
+
+    $response->setMaxAge(7*60);
+    return $response;
+
 })->assert('quotesite', $sites);  
 
 $app->run();
