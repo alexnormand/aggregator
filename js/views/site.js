@@ -11,6 +11,7 @@ define([
 
 	initialize: function() {
 	    this.collection.bind('reset', this.render, this);
+	    this.updateMainView(this.loaderImage, null);
 	    $(document).scrollTop() !== 0 && $(document).scrollTop(0);
 	},
 	
@@ -26,7 +27,8 @@ define([
 					    quotes: this.collection.toJSON()
 					  });
 		
-		    this.$el.html(html);
+		    this.$el.html(html)
+		            .fadeIn('slow');
 		    this.updateMainView(this.el, null);
 		}
 	    });		     	    	    

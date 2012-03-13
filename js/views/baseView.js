@@ -4,6 +4,8 @@ define([
     'backbone'    
 ], function($, _, Backbone) { 
     var BaseView = Backbone.View.extend({
+	
+	loaderImage : '<div class="hero-unit loader"></div>',
 
 	updateMainView: function(html, i) {
 	    var menuItems = $('ul.nav li');
