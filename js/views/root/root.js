@@ -10,8 +10,6 @@ define([
     var Root = BaseView.extend({	
 
 	template: RootTemplate,
-	tagName: 'div',
-	className: 'container',
 
 	render: function(event) {
 	    this.$el.html(this.template);	  
