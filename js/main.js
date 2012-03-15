@@ -2,6 +2,7 @@ require.config({
     paths : {
 	text: 'lib/requirejs/text',
 	order: 'lib/requirejs/order',
+	jquery: 'lib/jquery',
 	fastclick: 'lib/fastclick',
 	bootstraptransition: 'lib/bootstrap-transition',
 	bootstrapcollapse: 'lib/bootstrap-collapse',
@@ -11,13 +12,13 @@ require.config({
 });
 
 require(
-    ['jquery',     
-     'underscore',
-     'backbone', 
+    ['order!jquery',     
+     'order!underscore',
+     'order!backbone', 
      'order!routers/router',
      'fastclick',
-     'bootstraptransition', 
-     'bootstrapcollapse'], 
+     'order!bootstraptransition', 
+     'order!bootstrapcollapse'], 
     function ($, _, Backbone, Router, FastClick) {
 
 	var router = new Router;

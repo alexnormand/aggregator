@@ -82,11 +82,9 @@
     <target name="-js.concatenate"
         description="Concatenates specified JavaScript files">      
         <exec executable="node" failonerror="true">
-	  <arg line=" ${r.node} -o ${app.build.js}
-                                findNestedDependencies=true 
-                                name=main" />
+	  <arg line=" ${r.node} -o ${app.build.js}" />
 	</exec>
-	<copy file="${src.js.dir}/lib/requirejs/require-jquery.js" todir="${build.dir}/js/lib/requirejs"/>
+	<copy file="${src.js.dir}/lib/requirejs/require.js" todir="${build.dir}/js/lib/requirejs"/>
 	<echo>Finished JS concatenation and minification</echo>
     </target>
 
