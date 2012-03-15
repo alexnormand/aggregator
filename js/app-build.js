@@ -12,5 +12,7 @@
 	backbone: 'lib/backbone'
     },
     optimize: "uglify",
-    name: "main"
+    name: "lib/requirejs/almond",
+    include: "main",
+    wrap:true
 })
