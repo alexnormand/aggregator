@@ -5,12 +5,31 @@ use Goutte\Client;
 use Symfony\Component\DomCrawler\Crawler;
 use Symfony\Component\HttpFoundation\Response;
 
+$app = new Silex\Application();
 
-$json = json_decode(file_get_contents(__DIR__.'/sites.json'), true);
-$sites = '^' . implode('|', array_keys($json)) . '$';
+/**
+ * Parses "sites.json" to retrieve the list of sites and their associated metadata
+ * into a PHP associative array.
+ *
+ * @return array
+ */
+$app['quotesite_list'] = json_decode(file_get_contents(__DIR__.'/sites.json'), true);
 
-$getQuotes = function($quotesite) use ($json) {
-  $site = $json[$quotesite];
+/**
+ * Returns the regex used to validate get parameters to match any of the supported sites
+ * eg: ^fmylife|mlia|tfln$ 
+ *
+ * return string - the regex used to validate get parameters.
+ */
+$app['sites_regex'] = '^'.implode('|', array_keys($app['quotesite_list'])).'$';
+
+/**
+ * Returns the latest "quotes" of a given site
+ *
+ * @param array - an array which containts all the metadata associated with a site.   
+ * @return string - The latest "quotes" in JSON format.
+ */
+$app['getQuotes'] = $app->protect(function($site) {
 
   $client = new Client();
   $crawler = $client->request('GET', $site['feedurl'].'?format=xml');
@@ -26,31 +45,24 @@ $getQuotes = function($quotesite) use ($json) {
       return array (
 	       'date'    => $e->filter($site['datetag'])->text(),
 	       'url'     => $e->filter($site['urltag'])->text(),
-	       'content' => $content
-                   );    
+	       'content' => $content);    
     });
 
   return isset($site['offset']) ? json_encode(array_slice($result, $site['offset']))
                                 : json_encode($result);
-};
+});
 
 
-$app = new Silex\Application();
-
-$app->get('/{quotesite}', function ($quotesite) use ($getQuotes, $app) {
+$app->get('/{quotesite}', function ($quotesite) use ($app) {    
 
     $response = new Response(
-		  $getQuotes($app->escape($quotesite)),			
+		  $app['getQuotes']($app['quotesite_list'][$quotesite]),			
 		  200,
 		  array('Content-Type' => 'application/json')
 		);   
-
     $response->setMaxAge(7*60);
     return $response;
 
-})->assert('quotesite', $sites);  
+})->assert('quotesite', $app['sites_regex']);  
 
 $app->run();
-
-
-
