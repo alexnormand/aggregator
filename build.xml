@@ -64,6 +64,13 @@
       <copy todir="${build.dir}/img">
 	<fileset dir="${basedir}/img" />
       </copy>
+      <!-- Add single JavaScript file dynamically to avoid page blocking and remove require.js 
+	   since it is replaced by the almond.js minimal "shim" AMD loader.	-->
+      <replaceregexp 
+	  match='&lt;script data-main="js/main" src="js/lib/requirejs/require.js"&gt;&lt;/script&gt;' 
+	  replace='&lt;script&gt;s=document.createElement("script");s.src="js/main.js";document.body.appendChild(s);&lt;/script&gt;'>
+	<fileset dir="${build.dir}" includes="index.html"/>
+      </replaceregexp>      
       <echo>Copied index.html</echo>
     </target>
 	
@@ -84,14 +91,6 @@
         <exec executable="node" failonerror="true">
 	  <arg line=" ${r.node} -o ${app.build.js}" />
 	</exec>
-	
-	<!-- Add single JavaScript file dynamically to avoid page blocking and remove require.js 
-	     since it is replaced by the almond.js minimal "shim" AMD loader.	-->
-	<replaceregexp 
-	    match='&lt;script data-main="js/main" src="js/lib/requirejs/require.js"&gt;&lt;/script&gt;' 
-	    replace='&lt;script&gt;s=document.createElement("script");s.src="js/main.js";document.body.appendChild(s);&lt;/script&gt;'>
-	  <fileset dir="${build.dir}" includes="index.html"/>
-	</replaceregexp>
 	<echo>Finished JS concatenation and minification</echo>
     </target>
 
