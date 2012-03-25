@@ -26,7 +26,7 @@ $app['sites_regex'] = '^'.implode('|', array_keys($app['quotesite_list'])).'$';
 /**
  * Returns the latest "quotes" of a given site
  *
- * @param array - an array which containts all the metadata associated with a site.   
+ * @param array - an array which contains all the metadata associated with a site.   
  * @return string - The latest "quotes" in JSON format.
  */
 $app['getQuotes'] = $app->protect(function($site) {
