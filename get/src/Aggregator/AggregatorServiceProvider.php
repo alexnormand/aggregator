@@ -44,7 +44,7 @@ class AggregatorServiceProvider implements ServiceProviderInterface {
     	    $e = new Crawler($node);
     
     	    $content = $e->filter($site['contenttag'])->text();
-    	    $content = preg_replace('/<a.+>.*<\/a>|<img.+>/i/i', '', $content);
+    	    $content = preg_replace('/<a.+>.*<\/a>|<img.+>/i', '', $content);
 
     	    return array (
     			  'date'    => $e->filter($site['datetag'])->text(),
