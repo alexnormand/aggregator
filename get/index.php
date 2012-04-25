@@ -39,8 +39,7 @@ $app['getQuotes'] = $app->protect(function($site) {
       $e = new Crawler($node);
     
       $content = $e->filter($site['contenttag'])->text();            
-      $content = preg_replace('/<a.+>.*<\/a>/i', '', $content);
-      $content = preg_replace('/<img.+>/i', '', $content);
+      $content = preg_replace('/<a.+>.*<\/a>|<img.+>/i', '', $content);      
 
       return array (
 	       'date'    => $e->filter($site['datetag'])->text(),
