@@ -8,7 +8,7 @@ $app->register(new Aggregator\AggregatorServiceProvider());
 
 $app->get('/{quotesite}', function ($quotesite) use ($app) {    
     
-    $response = $app->json(($app['getQuotes']($app['quotesite_list'][$quotesite])));
+    $response = $app->json($app['getQuotes']($app['quotesite_list'][$quotesite]));
     $response->setMaxAge(7*60);
     return $response;
 
