@@ -12,7 +12,7 @@ $app->get('/{quotesite}', function ($quotesite) use ($app) {
     $response->setMaxAge(7*60);
     return $response;
 
-  });  
+})->assert('quotesite', $app['sites_regex']);  
 
 $app->run();
 
