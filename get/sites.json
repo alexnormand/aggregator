@@ -39,7 +39,7 @@
        "entrytag":"item",
        "datetag": "pubDate",
        "contenttag": "description",
-       "urltag":"origLink"
+       "urltag":"link"
    },
    "viedemerde":  {
        "feedurl": "http://feeds.feedburner.com/viedemerde",
