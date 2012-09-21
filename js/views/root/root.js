@@ -1,5 +1,5 @@
 define([
-    'jquery', 
+    'jquery',
     'backbone',
     'views/baseView',
     'views/root/siteBox',
@@ -7,29 +7,29 @@ define([
     'text!templates/root/root.html'
 ], function($, Backbone, BaseView, SiteBoxView, Site, RootTemplate) {
 
-    var Root = BaseView.extend({	
+    var Root = BaseView.extend({
 
-	template: RootTemplate,
+        template: RootTemplate,
 
-	render: function(event) {
-	    this.$el.html(this.template);	  
-	    this.updateMainView(this.el, 0);
+        render: function(event) {
+            this.$el.html(this.template);
+            this.updateMainView(this.el, 0);
 
-	    _.each(this.options.sites, function(s, key) {
-		var site  = new Site(null, {sitename: key}),
-	            view  = new SiteBoxView({collection: site,
+            _.each(this.options.sites, function(s, key) {
+                var site  = new Site(null, {sitename: key}),
+                    view  = new SiteBoxView({collection: site,
                                              name: s.site,
-					     id: key,
-					     el: document.getElementById(key)
-					    });		
+                                             id: key,
+                                             el: document.getElementById(key)
+                                            });
 
-		$.getJSON(site.url, function(json) {
-		    site.reset(json);
-		});	    		
-	    });	    
+                $.getJSON(site.url, function(json) {
+                    site.reset(json);
+                });
+            });
 
-	    return this;
-	}
+            return this;
+        }
 
     });
 

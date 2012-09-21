@@ -1,11 +1,11 @@
 define([
-    'jquery', 
-    'backbone', 
+    'jquery',
+    'backbone',
     'views/baseView',
     'text!templates/contact.html'
 ], function($, Backbone, BaseView, ContactTemplate) {
 
-    var Contact = BaseView.extend({	
+    var Contact = BaseView.extend({
 
 	template: ContactTemplate,
 	tagName: 'div',
@@ -13,7 +13,7 @@ define([
 
 	render: function(event) {
 	    this.$el.html(this.template);
-	    this.updateMainView(this.el, 2);
+	    this.updateMainView(this.el, 2, true);
 	    return this;
 	}
 
