@@ -31,7 +31,7 @@ define([
        * is lower than 440px to ensure height consistency between
        * all .site-box divs
        */
-      while (this.el.scrollHeight > (this.$el.height() + 2 * parseInt(this.$el.css('padding-top'), 10))) {
+      while (this.el.scrollHeight > this.$el.innerHeight()) {
           this.$el.find('p, hr').not('.view-more').last().remove();
       }
 
