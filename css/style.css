@@ -1611,9 +1611,21 @@ h4 small,h5 {
     }
 }
 
-@media (max-width: 1024px) {
-    .site-box {
-        padding: 10px 8px;
+@media (max-width:1200px) {    
+    .span4 {
+        width: 29%;
+    }
+}
+
+@media (max-width: 937px) {
+    .span4 {
+        width: 25%;
+    }
+}
+
+@media (max-width:815px) {
+    .span4 {
+        width: 22%;
     }
 }
 
