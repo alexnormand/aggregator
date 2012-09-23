@@ -1108,6 +1108,7 @@ button.btn.small,input[type="submit"].btn.small {
     margin-bottom: 5px;
     padding: 10px;
     height: 420px;
+    min-height: 74px;
 }
 
 
@@ -1124,12 +1125,6 @@ footer {
     background: #2C2C2C;
     font-size: 14px;
     padding-bottom: 20px;
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#333333',endColorstr='#222222',GradientType=0);
-    -moz-border-radius: 4px;
-    -moz-box-shadow: 0 1px 3px rgba(0,0,0,0.25),inset 0 -1px 0 rgba(0,0,0,0.1);
-    box-shadow: 0 0 3px rgba(0,0,0,0.25);
-    background-image: radial-gradient(center,ellipsecover,#4960200,#3B4D19100%);
-    border-bottom: 1px solid #333;    
 }
 
 footer .footer-content {
