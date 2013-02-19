@@ -6,7 +6,7 @@
        "datetag": "published",
        "contenttag": "content",
        "urltag":"id"
-   },      
+   },
    "tfln"      : {
        "feedurl": "http://feeds.feedburner.com/tfln",
        "site": "Texts From last night",
@@ -48,7 +48,7 @@
        "authortag": "author",
        "datetag": "published",
        "contenttag": "content",
-       "urltag":"origLink"
+       "urltag":"link"
    }
 }
 
