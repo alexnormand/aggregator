@@ -1,24 +1,20 @@
-define([
-    'jquery',
-    'backbone',
-    'views/baseView',
-    'text!templates/about.html'
-], function($, Backbone, BaseView, aboutTemplate) {
+var $ = require('jquery');
+var Backbone = require('backbone');
+var BaseView = require('./baseView');
+var aboutTemplate = require('../templates/about.html');
 
-    var About = BaseView.extend({
+Backbone.$ = $;
 
+
+module.exports = BaseView.extend({
 	template: aboutTemplate,
 	tagName: 'div',
 	className: 'hero-unit',
 
 	render: function(event) {
-	    this.$el.html(this.template);
-	    this.updateMainView(this.el, 1, true);
-	    return this;
+    this.$el.html(this.template);
+    this.updateMainView(this.el, 1, true);
+    return this;
 	}
-
-    });
-
-    return About;
 
 });

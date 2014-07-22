@@ -1,26 +1,26 @@
-define([
-    'jquery',
-    'underscore',
-    'backbone'
-], function($, _, Backbone) {
-    var BaseView = Backbone.View.extend({
+var $ = require('jquery');
+var Backbone = require('backbone');
+var BaseView = require('./baseView');
+var SiteTemplate = require('../templates/site.html');
 
-        loaderImage : '<div class="hero-unit loader"></div>',
+Backbone.$ = $;
 
-        updateMainView: function(html, i, footerAbsolutePosition) {
-            var menuItems = $('ul.nav li');
+module.exports = Backbone.View.extend({
 
-            $('#main').html(html);
-            menuItems.removeClass('active');
-            i !== null && menuItems.eq(i).addClass('active');
+  loaderImage : '<div class="hero-unit loader"></div>',
 
-            if (footerAbsolutePosition) {
-                $('body').addClass('footerAbsolute');
-            } else {
-                $('body').removeClass('footerAbsolute');
-            }
-        }
-    });
+  updateMainView: function(html, i, footerAbsolutePosition) {
+    var menuItems = $('ul.nav li');
 
-    return BaseView;
+    $('#main').html(html);
+    menuItems.removeClass('active');
+    i !== null && menuItems.eq(i).addClass('active');
+
+    if (footerAbsolutePosition) {
+      $('body').addClass('footerAbsolute');
+    } else {
+      $('body').removeClass('footerAbsolute');
+    }
+  }
 });
+

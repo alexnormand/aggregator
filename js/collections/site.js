@@ -1,12 +1,10 @@
-define(['backbone', 'models/quote'], function(Backbone, Quote) {
- 
-    var Site = Backbone.Collection.extend({
-	model : Quote,
+var Backbone = require('backbone');
+var Quote = require('../models/quote');
 
-	initialize: function(models, options) {
-	    this.url = 'get/' + options.sitename;
-	}
-    });
-    
-    return Site;
+
+module.exports = Backbone.Collection.extend({
+  model : Quote,
+  initialize: function(models, options) {
+    this.url = 'get/' + options.sitename;
+  }
 });

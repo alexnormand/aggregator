@@ -1,0 +1,28 @@
+{
+  "name": "aggregator",
+  "version": "0.0.0",
+  "description": "A quotesite aggregator (powered by Backbone.js, jQuery, Twitter Bootstrap, Silex, Goutte)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/alexnormand/aggregator.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alexnormand/aggregator/issues"
+  },
+  "homepage": "https://github.com/alexnormand/aggregator",
+  "devDependencies": {
+    "backbone": "^1.1.2",
+    "browserify": "^4.2.3",
+    "fastclick": "^1.0.2",
+    "gulp": "^3.8.6",
+    "jquery": "^2.1.1",
+    "stringify": "^2.2.0",
+    "underscore": "^1.6.0"
+  }
+}
