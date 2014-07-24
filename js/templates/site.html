@@ -5,7 +5,7 @@
   <div class="panel">
     <% _.each(quotes, function(quote) { %>
     <p>
-      <%- quote.content %>
+      <%= quote.content %>
     </p>
     <div class="quote-footer">
       <time datetime="<%= quote.date %>"><%=quote.date %></time> -
