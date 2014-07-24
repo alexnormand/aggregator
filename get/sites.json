@@ -1,61 +1,52 @@
 {
-   "fmylife"   : {
-       "feedurl" : "http://feeds2.feedburner.com/fmylife",
-       "site": "Fuck My Life",
-       "entrytag": "entry",
-       "datetag": "published",
-       "contenttag": "content",
-       "urltag":"id"
-   },
-   "tfln"      : {
-       "feedurl": "http://feeds.feedburner.com/tfln",
-       "site": "Texts From last night",
-       "entrytag":"item",
-       "datetag": "pubDate",
-       "contenttag": "description",
-       "urltag":"origLink"
-   },
-    "mlia"      :  {
-	"feedurl": "http://feeds.feedburner.com/mlia",
-	"site": "My Life Is Average",
-	"entrytag":"item",
-	"datetag": "pubDate",
-	"contenttag": "description",
-        "urltag":"guid"
-   },
-
-   "dtc"       :  {
-       "feedurl": "http://feeds.feedburner.com/bashfr",
-       "offset": 3,
-       "site": "Dans ton chat",
-       "entrytag": "item",
-       "datetag": "pubDate",
-       "contenttag": "description",
-       "urltag":"origLink"
-   },
-   "pebkac"    :  {
-       "feedurl": "http://feeds.feedburner.com/Pebkacfr",
-       "site": "PEBKAC",
-       "entrytag":"item",
-       "datetag": "pubDate",
-       "contenttag": "description",
-       "urltag":"link"
-   },
-   "viedemerde":  {
-       "feedurl": "http://feeds.feedburner.com/viedemerde",
-       "site": "Vie de merde",
-       "entrytag":"entry",
-       "authortag": "author",
-       "datetag": "published",
-       "contenttag": "content",
-       "urltag":"link"
-   }
+    "fmylife": {
+        "feedurl": "http://feeds2.feedburner.com/fmylife",
+        "site": "Fuck My Life",
+        "entrytag": "default:entry",
+        "datetag": "default:published",
+        "contenttag": "default:content",
+        "urltag": "default:id"
+    },
+    "tfln": {
+        "feedurl": "http://feeds.feedburner.com/tfln",
+        "site": "Texts From last night",
+        "entrytag": "item",
+        "datetag": "pubDate",
+        "contenttag": "description",
+        "urltag": "feedburner:origLink"
+    },
+    "mlia": {
+        "feedurl": "http://feeds.feedburner.com/mlia",
+        "site": "My Life Is Average",
+        "entrytag": "item",
+        "datetag": "pubDate",
+        "contenttag": "description",
+        "urltag": "guid"
+    },
+    "dtc": {
+        "feedurl": "http://feeds.feedburner.com/bashfr",
+        "offset": 3,
+        "site": "Dans ton chat",
+        "entrytag": "item",
+        "datetag": "pubDate",
+        "contenttag": "description",
+        "urltag": "feedburner:origLink"
+    },
+    "pebkac": {
+        "feedurl": "http://feeds.feedburner.com/Pebkacfr",
+        "site": "PEBKAC",
+        "entrytag": "item",
+        "datetag": "pubDate",
+        "contenttag": "description",
+        "urltag": "link"
+    },
+    "viedemerde": {
+        "feedurl": "http://feeds.feedburner.com/viedemerde",
+        "site": "Vie de merde",
+        "entrytag": "default:entry",
+        "authortag": "default:author",
+        "datetag": "default:published",
+        "contenttag": "default:content",
+        "urltag": "default:link"
+    }
 }
-
-
-
-
-
-
-
-

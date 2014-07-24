@@ -1,0 +1,12 @@
+{
+  "config": {
+    "vendor-dir": "get/vendor"
+  },
+  "autoload": {
+    "psr-0": {"Aggregator\\": "get/src/"}
+  },
+  "require": {
+    "fabpot/goutte": "~2.0",
+    "silex/silex": "~1.2"
+  }
+}

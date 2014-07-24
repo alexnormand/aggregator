@@ -2,16 +2,19 @@
 
 namespace Aggregator;
 
-require_once __DIR__.'/../../vendor/goutte.phar';
-
 use Silex\Application;
 use Silex\ServiceProviderInterface;
 use Goutte\Client;
 use Symfony\Component\DomCrawler\Crawler;
+use Symfony\Component\CssSelector\CssSelector;
+
+
 
 class AggregatorServiceProvider implements ServiceProviderInterface {
+  public function boot(Application $app) {}
+
   public function register(Application $app) {
-   
+
     /**
      * Parses "sites.json" to retrieve the list of sites and their associated metadata
      * into a PHP associative array.
@@ -19,8 +22,8 @@ class AggregatorServiceProvider implements ServiceProviderInterface {
      * @return array
      */
     $app['quotesite_list'] = json_decode(file_get_contents(__DIR__.'/../../sites.json'), true);
-    
-    /** 
+
+    /**
      * Returns the regex used to validate get parameters to match any of the supported sites
      * eg: ^fmylife|mlia|tfln$
      *
@@ -36,24 +39,26 @@ class AggregatorServiceProvider implements ServiceProviderInterface {
      */
     $app['getQuotes'] = $app->protect(function($site) {
 
-    	$client = new Client();
-    	$crawler = $client->request('GET', $site['feedurl'].'?format=xml');
-    	$entries = $crawler->filter($site['entrytag']);
+        CssSelector::disableHtmlExtension();
 
-    	$result = $entries->each(function($node) use ($site) {
-    	    $e = new Crawler($node);
-    
-    	    $content = $e->filter($site['contenttag'])->text();
-    	    $content = preg_replace('/<a.+>.*<\/a>|<img.+>/i', '', $content);
+        $client = new Client();
+        $crawler = $client->request('GET', $site['feedurl'].'?format=xml');
+        $entries = $crawler->filterXPath('//'.$site['entrytag']);
 
-    	    return array (
-    			  'date'    => $e->filter($site['datetag'])->text(),
-    			  'url'     => $e->filter($site['urltag'])->text(),
-    			  'content' => $content);
-    	  });
+        $result = $entries->each(function(Crawler $node) use ($site) {
 
-    	return isset($site['offset']) ? array_slice($result, $site['offset'])
-    	                              : $result;
+            $content = $node->filterXPath('//'.$site['contenttag'])->text();
+            $content = preg_replace('/<a.+>.*<\/a>|<img.+>|<h\d.+>.*<\/h\d>/i', '', $content);
+
+            return array (
+                  'date'    => $node->filterXPath('//'.$site['datetag'])->text(),
+                  'url'     => $node->filterXPath('//'.$site['urltag'])->text(),
+                  'content' => $content);
+          });
+
+
+        return isset($site['offset']) ? array_slice($result, $site['offset'])
+                                      : $result;
     });
 
   }

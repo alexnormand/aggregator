@@ -1,13 +1,11 @@
 <?php
-require_once __DIR__.'/vendor/silex.phar';
+require_once __DIR__.'/vendor/autoload.php';
 
 $app = new Silex\Application();
 
+$app->register(new Aggregator\AggregatorServiceProvider());
 
 $app['debug'] = true;
-
-$app['autoloader']->registerNamespace('Aggregator', __DIR__.'/src/');
-$app->register(new Aggregator\AggregatorServiceProvider());
 
 $app->get('/{quotesite}', function ($quotesite) use ($app) {
 
