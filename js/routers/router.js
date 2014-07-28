@@ -1,8 +1,6 @@
 var $ = require('jquery');
 var Backbone = require('backbone');
 var RootView = require('../views/root/root');
-var AboutView = require('../views/about');
-var ContactView = require('../views/contact');
 var SiteView = require('../views/site');
 var Site = require('../collections/site');
 
@@ -11,10 +9,10 @@ Backbone.$ = $;
 module.exports = Backbone.Router.extend({
 
   routes: {
-    ""        : "root",
-    "about"   : "about",
-    "contact" : "contact",
-    ":sitename"   : "site"
+    ''        : 'root',
+    'about': function(){},
+    'contact': function() {},
+    ':sitename'   : 'site',
   },
 
   root : function () {
@@ -24,15 +22,6 @@ module.exports = Backbone.Router.extend({
     });
   },
 
-  about : function() {
-    var view = new AboutView;
-    view.render();
-  },
-
-  contact : function() {
-    var view = new ContactView;
-    view.render();
-  },
 
   site: function(sitename) {
     var site  = new Site(null, {sitename: sitename}),

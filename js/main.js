@@ -9,7 +9,7 @@ Backbone.$ = $;
 
 
 var router = new Router();
-Backbone.history.start({ pushState: true });
+Backbone.history.start();
 
 //Add FastClick for native-like tapping on smartphones
 FastClick(document.body);

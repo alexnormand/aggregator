@@ -1,17 +1,17 @@
-<div class="hero-unit">
-  <h1 class="titlequote"><%= name %></h1>
-</div>
-<div class="row">
-  <div class="panel">
-    <% _.each(quotes, function(quote) { %>
-    <p>
-      <%= quote.content %>
-    </p>
-    <div class="quote-footer">
-      <time datetime="<%= quote.date %>"><%=quote.date %></time> -
-      <a href="<%= quote.url %>">link</a>
+<div class="sites">
+  <div class="row">
+    <div class="panel large-9 small-centered columns">
+      <h1 class="titlequote"><%= name %></h1>
+      <% _.each(quotes, function(quote) { %>
+      <p>
+        <%= quote.content %>
+      </p>
+      <div class="quote-footer">
+        <time datetime="<%= quote.date %>"><%=quote.date %></time> -
+        <a href="<%= quote.url %>">link</a>
+      </div>
+      <hr>
+      <% }); %>
     </div>
-    <hr>
-    <% }); %>
   </div>
 </div>
