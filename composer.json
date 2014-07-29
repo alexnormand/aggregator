@@ -3,7 +3,7 @@
     "vendor-dir": "app/get/vendor"
   },
   "autoload": {
-    "psr-0": {"Aggregator\\": "get/src/"}
+    "psr-0": {"Aggregator\\": "app/get/src/"}
   },
   "require": {
     "fabpot/goutte": "~2.0",
