@@ -17,7 +17,7 @@ gulp.task('clean', function() {
 gulp.task('browserify', ['clean'], function() {
   return browserify()
     .transform(stringify())
-    .add('./js/main.js')
+    .add('./app/js/main.js')
     .bundle({ debug: true })
     .pipe(source('main.js'))
     .pipe(streamify(uglify()))
@@ -26,17 +26,17 @@ gulp.task('browserify', ['clean'], function() {
 
 gulp.task('minify-css', ['clean'], function() {
   return gulp
-    .src('./css/**/*.css')
+    .src('./app/css/**/*.css')
     .pipe(concat('style.css'))
     .pipe(cssmin({ keepSpecialComments: 0 }))
     .pipe(gulp.dest('./build/css'));
 });
 
 gulp.task('build', ['browserify', 'minify-css'], function() {
-  gulp.src('./index.html').pipe(gulp.dest('./build'));
-  gulp.src('./get/**', { dot: true }).pipe(gulp.dest('./build/get'));
+  gulp.src(['./app/index.html', './app/favicon.ico', './app/apple-touch-icon.png']).pipe(gulp.dest('./build'));
+  gulp.src('./app/get/**', { dot: true }).pipe(gulp.dest('./build/get'));
 });
 
 gulp.task('watch', function() {
-  gulp.watch(['./js/**', './index.html', './css/**'], ['build']);
+  gulp.watch(['./app/js/**', './app/index.html', './app/css/**'], ['build']);
 });
