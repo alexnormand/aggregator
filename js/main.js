@@ -7,7 +7,6 @@ var Router = require('./routers/router.js');
 
 Backbone.$ = $;
 
-
 var router = new Router();
 Backbone.history.start();
 

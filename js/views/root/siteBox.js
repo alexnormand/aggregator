@@ -5,7 +5,6 @@ var siteBoxTemplate = require('../../templates/root/siteBox.html');
 
 Backbone.$ = $;
 
-
 module.exports = Backbone.View.extend({
 
   template: siteBoxTemplate,
@@ -16,11 +15,11 @@ module.exports = Backbone.View.extend({
   },
 
   render: function(event) {
-    var html = _.template(this.template,
-        {quotes: this.collection.pluck('content').slice(0,3),
-         name: this.name,
-         id: this.id
-        });
+    var html = _.template(this.template, {
+      quotes: this.collection.pluck('content').slice(0,3),
+      name: this.name,
+      id: this.id
+    });
 
     this.$el.removeClass('loader')
       .hide()
@@ -33,7 +32,7 @@ module.exports = Backbone.View.extend({
      * is lower than 440px to ensure height consistency between
      * all .site-box divs
      */
-    while (this.el.scrollHeight > this.$el.innerHeight()) {
+    while (this.el.scrollHeight > 800) {
       this.$el.find('p, hr').not('.view-more').last().remove();
     }
 

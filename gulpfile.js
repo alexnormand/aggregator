@@ -20,7 +20,7 @@ gulp.task('browserify', ['clean'], function() {
     .add('./js/main.js')
     .bundle({ debug: true })
     .pipe(source('main.js'))
-    // .pipe(streamify(uglify()))
+    .pipe(streamify(uglify()))
     .pipe(gulp.dest('./build/js'));
 });
 
