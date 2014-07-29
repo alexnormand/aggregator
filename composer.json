@@ -1,6 +1,6 @@
 {
   "config": {
-    "vendor-dir": "get/vendor"
+    "vendor-dir": "app/get/vendor"
   },
   "autoload": {
     "psr-0": {"Aggregator\\": "get/src/"}
