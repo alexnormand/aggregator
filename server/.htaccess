@@ -2,7 +2,7 @@
     #Options -MultiViews
 
     RewriteEngine On
-    RewriteBase /get
+    RewriteBase /api
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ index.php [L]
 </IfModule>
