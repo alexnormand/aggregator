@@ -1,9 +1,9 @@
 {
   "config": {
-    "vendor-dir": "app/get/vendor"
+    "vendor-dir": "server/vendor"
   },
   "autoload": {
-    "psr-0": {"Aggregator\\": "app/get/src/"}
+    "psr-0": {"Aggregator\\": "server/src/"}
   },
   "require": {
     "fabpot/goutte": "~2.0",

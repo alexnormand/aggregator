@@ -34,7 +34,7 @@ gulp.task('minify-css', ['clean'], function() {
 
 gulp.task('build', ['browserify', 'minify-css'], function() {
   gulp.src(['./app/index.html', './app/favicon.ico', './app/apple-touch-icon.png']).pipe(gulp.dest('./build'));
-  gulp.src('./app/get/**', { dot: true }).pipe(gulp.dest('./build/get'));
+  gulp.src('./server/**', { dot: true }).pipe(gulp.dest('./build/server'));
 });
 
 gulp.task('watch', function() {

@@ -16,7 +16,7 @@ module.exports = Backbone.Router.extend({
   },
 
   root : function () {
-    $.getJSON('get/sites.json', function(sites) {
+    $.getJSON('server/sites.json', function(sites) {
       var view = new RootView({sites: sites});
       view.render();
     });
