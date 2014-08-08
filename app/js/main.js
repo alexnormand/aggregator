@@ -1,6 +1,6 @@
 var $ = require('jquery');
 var FastClick = require('fastclick');
-var Backbone = require('Backbone');
+var Backbone = require('backbone');
 var _ = require('underscore');
 
 var Router = require('./routers/router.js');
